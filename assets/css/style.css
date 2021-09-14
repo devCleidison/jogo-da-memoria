@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+:root{
+  --font: 'Righteous', sans-serif;
+
+  --primary-color: #101c2c;
+  --second-color: #05c3ff;
+  --bs: rgba(0, 0, 0, 0.45);
+}
+
+html{
+  font-size: 62.5%;
+}
+
+body{
+  font-family: var(--font);
+  font-size: 1.6rem;
+}
+
+.card{
+  width: 15rem;
+  height: 15rem;
+
+  position: relative;
+
+  transform-style: preserve-3d;
+
+  transition: transform .5s;
+}
+
+.card_back,
+.card_front{
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 2rem;
+
+  box-shadow: 1rem 1rem 1rem var(--bs);
+
+  position: absolute;
+
+  backface-visibility: hidden;
+}
+
+.card_front{
+  background-color: var(--primary-color);
+
+  transform: rotateY(180deg);
+}
+
+.card_back{
+  background-color: var(--second-color);
+  color: var(--primary-color);
+
+  font-size: 3rem;
+}
+
+.flip{
+  transform: rotateY(180deg);
+}

@@ -7,6 +7,7 @@
   --second-color: #05c3ff;
   --color-white: #FFF;
   --color-yellow: #FFFF00;
+  --color-gray: #c7cdd3;
   --bg: rgba(0, 0, 0, 0.9);
   --bs: rgba(0, 0, 0, 0.45);
 }
@@ -22,6 +23,14 @@
 body{
   font-family: var(--font);
   font-size: 1.6rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+
+  background-color: var(--color-gray);
 }
 
 .card{
@@ -83,7 +92,7 @@ body{
 
   font-size: 7rem;
 
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -99,5 +108,14 @@ body{
   border: none;
   border-radius: 1rem;
 
-  margin-top: 1rem;
+  margin-top: 2rem;
+}
+
+#gameBoard{
+  max-width: 700px;
+
+  display: grid;
+  grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+
+  gap: 2rem;
 }

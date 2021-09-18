@@ -1,12 +1,12 @@
 const FRONT = "card_front";
 const BACK = "card_back";
 const CARD = "card";
-const ICON = 'icon'
+const ICON = "icon";
 
 startGame();
 
 function startGame() {
-  initializeCards(game.createCardsFromTechs())
+  initializeCards(game.createCardsFromTechs());
 }
 
 function initializeCards() {
@@ -36,16 +36,31 @@ function createCardFace(face, card, element) {
   cardElementFace.classList.add(face);
 
   if (face === FRONT) {
-    let iconElement = document.createElement('img')
-    iconElement.classList.add(ICON)
-    iconElement.src = './assets/images/' + card.icon + '.png'
-    cardElementFace.appendChild(iconElement)
+    let iconElement = document.createElement("img");
+    iconElement.classList.add(ICON);
+    iconElement.src = "./assets/images/" + card.icon + ".png";
+    cardElementFace.appendChild(iconElement);
   } else {
     cardElementFace.innerHTML = "&lt/&gt";
   }
-  element.appendChild(cardElementFace)
+  element.appendChild(cardElementFace);
 }
 
 function flipCard() {
-  this.classList.add('flip')
+  if (game.setCard(this.id)) {
+    this.classList.add("flip");
+    if (game.checkMatch()) {
+      game.clearCards();
+    } else {
+      setTimeout(() => {
+        let firstCardView = document.getElementById(game.firstCard.id);
+        let secondCardView = document.getElementById(game.secondCard.id);
+
+        firstCardView.classList.remove("flip");
+        secondCardView.classList.remove("flip");
+
+        game.clearCards()
+      }, 1000);
+    }
+  }
 }
